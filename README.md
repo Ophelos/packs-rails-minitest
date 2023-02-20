@@ -42,8 +42,8 @@ The environment variables should be set to values returned by the following Ruby
 
 | Variable             | Ruby                                                                                 |
 |----------------------|--------------------------------------------------------------------------------------|
-| DEFAULT_TEST         | `"{.,#{Packs.all.map(&:relative_path).join(",")}/test/**/*_test.rb}"`                |
-| DEFAULT_TEST_EXCLUDE | `"{.,#{Packs.all.map(&:relative_path).join(",")}/test/{system,dummy}/**/*_test.rb}"` |
+| DEFAULT_TEST         | `"{.,#{Packs.all.map(&:relative_path).join(",")}}/test/**/*_test.rb"`                |
+| DEFAULT_TEST_EXCLUDE | `"{.,#{Packs.all.map(&:relative_path).join(",")}}/test/{system,dummy}/**/*_test.rb"` |
 
 How you set this up is up to you, there isn't really a standard place. In `application.rb` or `boot.rb` work, just make
 sure you only set it if it is not already set, otherwise the Rake tasks defined in this package may not work.
