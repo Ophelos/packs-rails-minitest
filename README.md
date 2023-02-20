@@ -1,5 +1,7 @@
 # Packs::Rails::Minitest
 
+[![Gem Version](https://badge.fury.io/rb/packs-rails-minitest.svg)](https://badge.fury.io/rb/packs-rails-minitest)
+
 Adds Rake tasks for testing [packs](https://github.com/rubyatscale/packs) using minitest.
 
 ## Installation
