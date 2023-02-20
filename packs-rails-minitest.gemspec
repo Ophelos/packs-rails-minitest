@@ -19,5 +19,6 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "packs", "~> 0"
+  spec.add_dependency "activesupport", "~> 7"
   spec.add_dependency "railties", "~> 7"
 end

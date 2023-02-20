@@ -1,7 +1,7 @@
 namespace :packs do
   task test: "test:prepare" do
-    ENV["DEFAULT_TEST"] = "{#{Packs.all.map(&:name).join(",")}}/test/**/*_test.rb"
-    ENV["DEFAULT_TEST_EXCLUDE"] = "{#{Packs.all.map(&:name).join(",")}}/test/{system,dummy}/**/*_test.rb"
+    ENV["DEFAULT_TEST"] = "{#{Packs.all.map(&:relative_path).join(",")}}/test/**/*_test.rb"
+    ENV["DEFAULT_TEST_EXCLUDE"] = "{#{Packs.all.map(&:relative_path).join(",")}}/test/{system,dummy}/**/*_test.rb"
     system("rails", "test")
   end
 
@@ -34,6 +34,28 @@ namespace :packs do
           system("rails", "test", pack.relative_path.join("test/system/**/*_test.rb").to_s)
         end
       end
+    end
+  end
+end
+
+if Rails.configuration.packs_rails_minitest.override_tasks
+  Rake::Task["test"]&.clear
+  Rake::Task["test:all"]&.clear
+  Rake::Task["test:system"]&.clear
+
+  multitask test: ["test:prepare", "packs:test:prepare"] do
+    ENV["DEFAULT_TEST"] = "{.,#{Packs.all.map(&:relative_path).join(",")}}/test/**/*_test.rb"
+    ENV["DEFAULT_TEST_EXCLUDE"] = "{.,#{Packs.all.map(&:relative_path).join(",")}}/test/{system,dummy}/**/*_test.rb"
+    system("rails", "test")
+  end
+
+  namespace :test do
+    multitask all: [:prepare, "packs:test:prepare"] do
+      system("rails", "test", "test/**/*_test.rb", *Packs.all.map { |pack| pack.relative_path.join("test/**/*_test.rb").to_s })
+    end
+
+    multitask system: [:prepare, "packs:test:prepare"] do
+      system("rails", "test", "test/system/**/*_test.rb", *Packs.all.map { |pack| pack.relative_path.join("test/system/**/*_test.rb").to_s })
     end
   end
 end
