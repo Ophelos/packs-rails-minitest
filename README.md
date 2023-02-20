@@ -48,7 +48,7 @@ The environment variables should be set to values returned by the following Ruby
 How you set this up is up to you, there isn't really a standard place. In `application.rb` or `boot.rb` work, just make
 sure you only set it if it is not already set, otherwise the Rake tasks defined in this package may not work.
 
-#### Rake task
+#### Rake tasks
 
 Appropriate Rake tasks will be defined for you by setting `config.packs_rails_minitest.override_tasks = true` in
 your `application.rb`. If you only include this gem in specific environments you will need to set it conditionally e.g.
@@ -56,6 +56,8 @@ your `application.rb`. If you only include this gem in specific environments you
 ```ruby
 config.packs_rails_minitest.override_tasks = true if Rails.env.development? || Rails.env.test?
 ```
+
+Remember that you must use `rake test` instead of `rails test` for this to work.
 
 ## Contributing
 
