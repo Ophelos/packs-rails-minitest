@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Features
+
+- Support the `TEST` environment variable in the overridden `rake test`
+
 ## 0.1.1
 
 ### Features
