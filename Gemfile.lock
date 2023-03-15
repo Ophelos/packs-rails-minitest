@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    packs-rails-minitest (0.1.2)
+    packs-rails-minitest (0.1.3)
       activesupport (~> 7)
       packs (~> 0)
       railties (~> 7)

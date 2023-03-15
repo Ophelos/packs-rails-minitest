@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+### Bug fixes
+
+- Exit code is now non-zero when tests fail (specifically it matches whatever exit codes `rails test` uses)
+
 ## 0.1.2
 
 ### Features
