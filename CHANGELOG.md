@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+### Features
+
+- Support the `TESTOPTS` environment variable
+
 ## 0.1.3
 
 ### Bug fixes

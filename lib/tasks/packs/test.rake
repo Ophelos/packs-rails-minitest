@@ -1,4 +1,7 @@
-run_tests = ->(*args) { system("rails", "test", *args) || exit($?.exitstatus) }
+run_tests = ->(*args) do
+  opts = ENV.key?("TESTOPTS") ? ENV["TESTOPTS"].shellsplit : []
+  system("rails", "test", *args, *opts) || exit($?.exitstatus)
+end
 
 namespace :packs do
 
