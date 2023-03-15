@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5
+
+### Fixes
+
+- Bumped version number due to bad gem push
+
 ## 0.1.4
 
 ### Features
