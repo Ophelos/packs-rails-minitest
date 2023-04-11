@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Features
+
+- Make prepare tasks depend on the prepare tasks of the dependencies
+
 ## 0.1.5
 
 ### Fixes
