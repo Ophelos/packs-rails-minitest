@@ -30,7 +30,7 @@ namespace :packs do
       end
 
       namespace pack.name do
-        multitask :prepare
+        multitask prepare: pack.raw_hash["dependencies"]&.map { |dep| "#{dep}:prepare" }
 
         task(all: :prepare) { run_tests.call(pack.relative_path.join("test/**/*_test.rb").to_s) }
         task(system: :prepare) { run_tests.call(pack.relative_path.join("test/system/**/*_test.rb").to_s) }
